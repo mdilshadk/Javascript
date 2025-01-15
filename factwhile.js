@@ -3,7 +3,7 @@ let i=0;
 let res=1;
 
 while(sum[i]){
-    res+=sum[i];
+    res*=sum[i];
     i++;
 }
 console.log(res);

@@ -1,9 +1,17 @@
-let n=8;
-let temp=1;
+let i,n=8;
+let t1=0,t2=1;
+let nextterm=t1+t2;
 
-for(var i=0;i<=n;i++){
-    temp+=i;
-}
-console.log(i);
+
+console.log(t1);
+console.log(t2);
+
+
+for (i=3;i<=n;++i) {
+    console.log(nextterm);
+    t1=t2;
+    t2=nextterm;
+    nextterm= t1+t2;
+  }
 
 

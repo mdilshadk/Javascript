@@ -1,23 +1,15 @@
-let n=15;
-let prime=0;
+let n = 18; 
+let isPrime = true;
 
-if(n<2){
-    prime=1;
-}
-else{
-    for(let i=2;i<=n/2;i++){
-        if(n%i==0){
-            prime=1;
+if (n<=1) {
+    isPrime = false;
+} else {
+    for (let i = 2; i * i <= n; i++) {
+        if (n % i === 0) {
+            isPrime = false;
             break;
         }
     }
-    
 }
-if(prime==0){
-    console.log("prime");
-    
-}
-else{
-    console.log("not prime");
-    
-}
+
+console.log(isPrime ? `${n} is a prime number.` : `${n} is not a prime number.`);
