@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .quiz-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .options {
+            margin-bottom: 20px;
+        }
+        .option {
+            margin: 10px 0;
+            display: block;
+    
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background: #28a745;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div id="quiz">
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
+            <button class="btn" id="nextButton">Next</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+    {
+        question: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Lisbon"],
+        correct: 2          
+    },
+    {
+        question: "Which programming language is used for web development?",
+        options: ["Python", "JavaScript", "C++", "Java"],
+        correct: 1
+    },
+    {
+        question: "What is 5 + 3?",
+        options: ["5", "8", "12", "15"],
+        correct: 1
+    },
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextButton = document.getElementById("nextButton");
+
+function loadQuestion() {
+    const currentQuiz = quizData[currentQuestion];
+    questionEl.textContent = currentQuiz.question;
+    optionsEl.innerHTML = "";
+    currentQuiz.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.className = "option";
+        button.textContent = option;
+        button.onclick = () => {
+            if (index === currentQuiz.correct) {
+                score++;
+            }
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showScore();
+            }
+        };
+        optionsEl.appendChild(button);
+    });
+}
+
+function showScore() {
+    questionEl.textContent = `You scored ${score} out of ${quizData.length}!`;
+    optionsEl.innerHTML = "";
+    nextButton.style.display = "none";
+}
+
+loadQuestion();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 300px;
+            width: 500px;
+            background-color: aqua;
+            text-align: center;
+            padding: 20px;
+            margin-left: 500px;
+            margin-top: 200px;
+        }
+        button{
+            height: 50px;
+            width: 150px;
+            background-color: rgb(157, 243, 243);
+            border-radius: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="question" id="question"></div>
+        <br>
+        <div class="options" id="options"></div>
+        <button class="btn" id="next">next</button>
+        
+    </div>
+    
+
+   <script>
+    const questions=[
+        {
+            question:"1. Who is th prime minister of india",
+            options:["modi","rahul gandi","sonia gandi"],
+            answer: 0
+        },
+        {
+            question:"2. Who is th chife minister of kerala",
+            options:["modi","pinarayi","sonia gandi"],
+            answer: 1
+        },
+        {
+            question:"3. 5+3 is",
+            options:["8","18","7"],
+            answer:0
+        }
+    ];
+    let currentQuestion=0;
+    let score=0;
+
+        const questionElement=document.getElementById('question');
+        const optionElement=document.getElementById('options');
+        const nextButton=document.getElementById('next');
+        
+
+    function loadquestion() {
+        const q=questions[currentQuestion]; 
+        questionElement.textContent=q.question;
+        optionElement.innerHTML="";
+
+        q.options.forEach((opt, index) => {
+                const button=document.createElement('button');
+                button.className="option";
+                button.textContent=opt;
+                button.onclick=()=>{
+                    if(index===q.answer){
+                        score++;
+                    }
+                    currentQuestion++;
+                    if(currentQuestion<questions.length){
+                        loadquestion();
+                    }
+                    else{
+                        showscore();
+                    }
+                };
+                optionElement.appendChild(button);
+        });
+    }
+
+    function showscore(){
+        questionElement.textContent=`your mark is ${score} out of ${questions.length}`;
+        optionElement.innerHTML="";
+        next.style.display="none";
+    }
+    loadquestion();
+
+    
+   </script> 
+</body>
+</html>

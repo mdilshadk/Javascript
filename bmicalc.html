@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text"id="h" placeholder="enter your hight"><br><br>
+        
+        <input type="text" id="w"><br><br>
+        <button onclick="sub()">submit</button><br><br>
+
+        <h3 id="bmi"></h3>
+        <h1 id="btype"></h1>
+    </div>
+<script>
+    let sub=()=>{ 
+        let ht=parseInt(document.getElementById('h').value);
+        let wt=parseInt(document.getElementById('w').value);
+        let hm=ht/100;  
+        let total=wt/(hm*hm);
+        document.getElementById('bmi').innerHTML=Math.floor(total);
+        
+        if(total<18.5){
+            document.getElementById('btype').innerHTML="you are under weight";
+        }
+        else if(total>18.5&&total<24.9){
+            document.getElementById("btype").innerHTML="you are healthy weight";
+        }
+        else if(total>25&&total<29.9){
+            document.getElementById("btype").innerHTML="you are Overweight";
+        }
+        else if(total>30){
+            document.getElementById("btype").innerHTML="you are Obesity";
+        }
+        
+    }
+
+    
+</script>
+</body>
+</html>

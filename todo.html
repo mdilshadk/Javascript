@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: rgb(141, 16, 243);
+        }
+        
+        .in{
+            height: 40px;
+            width: 350px;
+        }
+        .p{
+
+            height: 40px;
+            width: 40px;
+        }
+        .body{
+            height: 450px;
+            width: 550px;
+            margin-left: 90px;
+            margin-top: 50px;
+            text-align: center;
+            background-color: white;
+        }
+        .h11{
+            text-align: left;
+            margin-left: 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <div class="body border border-2">
+        <h3 class="h11 mt-2"><b>TO-DO APP</b></h3>
+        <input id="box" class="in mt-3 rounded-3 border border-2" type="text">
+        <button onclick="add()" class="p mt-3 rounded-3 border border-2 bg-light"><i class="fa-solid fa-plus text-primary"></i></i></button>
+        
+        <h5>
+        <ul id="task" style="list-style-type:circle;" class="mt-3 ms-3">
+            
+        </ul>
+    </h5>
+    </div>
+
+    <script>
+        let add=()=>{
+            let inbox=document.getElementById('box').value;
+            
+            if(inbox===''){
+                alert("Enter Something...!");
+                return;
+            }
+            
+            var li=document.createElement("li");
+            li.textContent=inbox;
+            li.classList.add("d-flex", "justify-content-between", "align-items-center", "mt-2");
+            
+            let taskList = document.getElementById("task");
+            taskList.appendChild(li);
+            
+            var del=document.createElement("button");
+            del.textContent="delete";
+            del.classList.add("btn", "btn-danger", "btn-sm", "me-3");
+
+            
+            del.onclick=()=>{
+                li.remove(li);
+            };
+            li.appendChild(del);
+            
+            
+            document.getElementById('box').value = '';
+            
+        }
+        
+    </script>
+</body>
+</html>

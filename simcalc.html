@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="n1" type="number">
+    <input id="n2" type="number">
+    <br><br>
+    <button onclick="calculate('add')">+</button>
+    <button onclick="calculate('sub')">-</button>
+    <button onclick="calculate('mul')">*</button>
+    <button onclick="calculate('div')">/</button>
+    <h1 id="res" ></h1>
+<script>
+    let calculate=(x)=>{
+
+    let num1=parseInt(document.getElementById("n1").value);
+    let num2=parseInt(document.getElementById("n2").value);
+
+        if(!num1 || !num2){
+            alert("invalid");
+        }
+        else if(x==='add'){
+            result=num1+num2;
+        }
+        else if(x==='sub'){
+            result=num1-num2;
+        }
+        else if(x==='mul'){
+            result=num1*num2;
+        }
+        else if(x==='div'){
+            result=num1/num2;
+        }
+        document.getElementById("res").innerHTML=result;
+    }
+   
+</script>
+</body>
+</html>

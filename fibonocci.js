@@ -7,7 +7,7 @@ console.log(t1);
 console.log(t2);
 
 
-for (i=3;i<=n;++i) {
+for (i=3;i<n;++i) {
     console.log(nextterm);
     t1=t2;
     t2=nextterm;
